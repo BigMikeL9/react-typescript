@@ -1,13 +1,13 @@
 import React from "react";
-import TodoItemProps from "../types/TodoItem";
+import { TodoItemProps } from "../types/TodoItem.types";
 
 const TodoItem = (props: TodoItemProps) => {
   const clickHandler = () => {
-    props.onDeleteTodo(props.id);
+    props.onRemoveTodo(props.id);
   };
 
   return (
-    <li id={props.id}>
+    <li id={`${props.id}`}>
       <h2>{props.text}</h2>
       {/* <h3>Id: {props.id}</h3>
       <h4>Completed: {String(props.completed)}</h4> */}

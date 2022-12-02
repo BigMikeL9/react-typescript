@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
-import NewTodoProps from "../types/NewTodo";
+import NewTodoTypes from "../types/NewTodo.types";
 
-const NewTodo = (props: NewTodoProps) => {
+const NewTodo = (props: NewTodoTypes) => {
   const [enteredValue, setEnteredValue] = useState("");
-  const inputRef = useRef();
+
+  // specify which type of HTML element we are going to create this ref for, hence the '<>HTMLInputElement'
+  //  📝 *ALL* DOM elements have concrete types built-in typescript which we can use to refer to them
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredValue(event.target.value);
@@ -18,11 +21,11 @@ const NewTodo = (props: NewTodoProps) => {
   const onSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (enteredValue.length <= 0) return;
+    if (enteredValue.trim().length === 0) return;
 
     props.onAddTodo({ id: Date.now(), text: enteredValue });
 
-    inputRef.current.blur();
+    inputRef.current?.blur();
 
     setEnteredValue("");
   };

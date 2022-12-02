@@ -1,8 +1,7 @@
-import TodoItemProps from "../types/TodoItem";
-import TodoListProps from "../types/TodoList";
+import TodoListTypes from "../types/TodoList.types";
 import TodoItem from "./TodoItem";
 
-const TodoList = (props: TodoListProps) => {
+const TodoList = (props: TodoListTypes) => {
   console.log(props);
 
   return (
@@ -16,7 +15,7 @@ const TodoList = (props: TodoListProps) => {
               key={todo.id}
               id={todo.id}
               text={todo.text}
-              onDeleteTodo={props.onDeleteTodo}
+              onRemoveTodo={props.onRemoveTodo}
             />
           ))}
       </ul>

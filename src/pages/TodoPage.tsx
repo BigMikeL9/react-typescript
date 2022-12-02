@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import NewTodo from "../components/NewTodo";
 import TodoList from "../components/TodoList";
-import TodoItemProps from "../types/TodoItem";
+import TodoItemTypes from "../types/TodoItem.types";
 
 const TodoPage = () => {
-  const [todos, setTodos] = useState<any[]>([]);
+  const [todos, setTodos] = useState<TodoItemTypes[]>([]);
 
-  const addTodoHandler = (todo: TodoItemProps) => {
+  const addTodoHandler = (todo: TodoItemTypes) => {
     setTodos((prevState) => [...prevState, todo]);
   };
 
-  const deleteTodoHandler = (todoId: number) => {
+  const removeTodoHandler = (todoId: number) => {
     setTodos((prevState) => prevState.filter((el) => el.id !== todoId));
   };
 
@@ -18,8 +18,8 @@ const TodoPage = () => {
     <>
       <NewTodo onAddTodo={addTodoHandler} />
 
-      <TodoList todos={todos} onDeleteTodo={deleteTodoHandler}>
-        To test how to pass children with typescript type Annotation
+      <TodoList todos={todos} onRemoveTodo={removeTodoHandler}>
+        ------------ Your Added Todos ------------
       </TodoList>
     </>
   );
