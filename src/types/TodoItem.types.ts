@@ -7,6 +7,7 @@ interface TodoItemTypes {
 
 export default TodoItemTypes;
 
+// Not being used after using Context API 👇. Just here for reference.
 export interface TodoItemProps extends TodoItemTypes {
-  onRemoveTodo: (todoId: number) => void;
+  onDeleteTodo: (todoId: number) => void;
 }

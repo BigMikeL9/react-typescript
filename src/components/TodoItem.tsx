@@ -1,11 +1,17 @@
-import React from "react";
-import { TodoItemProps } from "../types/TodoItem.types";
+import React, { useContext } from "react";
+import TodoContext from "../context/todoContext";
+import TodoItemTypes from "../types/TodoItem.types";
 
-const TodoItem = (props: TodoItemProps) => {
+const TodoItem = (props: TodoItemTypes) => {
+  const todoContextData = useContext(TodoContext);
+  const { removeTodo } = todoContextData;
+
+  // -------
   const clickHandler = () => {
-    props.onRemoveTodo(props.id);
+    removeTodo(props.id);
   };
 
+  // -------
   return (
     <li id={`${props.id}`}>
       <h2>{props.text}</h2>
